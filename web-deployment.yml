@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: kubernetes-demo-app
-          image: registry.runnable.com/runnable/tag/latest
+          image: registry.runnable.com/runnable/web
           ports:
             - containerPort: 8000
           env:
