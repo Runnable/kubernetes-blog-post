@@ -2,22 +2,18 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    db: rethinkdb
-  name: rethinkdb
+    db: mongodb
+  name: mongodb
 spec:
   template:
     metadata:
       labels:
-        db: rethinkdb
+        db: mongodb
     spec:
       containers:
-      - image: rethinkdb
+      - image: mongodb
         args:
-          - "rethinkdb"
-          - "--bind"
-          - "all"
-          - "--cache-size"
-          - "100"
+          - "mongod"
         imagePullPolicy: Always
         name: rethinkdb
         ports:
@@ -31,9 +27,6 @@ spec:
           limits:
             cpu: 100m
             memory: 256Mi
-        volumeMounts:
-        - mountPath: /data/rethinkdb_data
-          name: rethinkdb-storage
       volumes:
-      - name: rethinkdb-storage
+      - name: mongo-storage
         emptyDir: {}
